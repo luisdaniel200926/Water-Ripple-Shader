@@ -48,7 +48,7 @@ Shader "Custom/Ocean"
             float PI = 3.1415;
             float waveX = sin( (_Time.y * _WaveSpeed) + (v.vertex.x * (_WavePeriod * 2*PI))   );
             float waveZ = sin( (_Time.y * _WaveSpeed) + (v.vertex.z * (_WavePeriod * 2*PI))   );
-            v.vertex.y = waveX * waveZ * _WaveAmplitude;
+            v.vertex.y = waveX  *waveZ* _WaveAmplitude;
             
 
             
