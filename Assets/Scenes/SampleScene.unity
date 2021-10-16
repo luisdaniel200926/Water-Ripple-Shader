@@ -391,7 +391,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaterialToModify: {fileID: 2100000, guid: 377698dcd1f2caf47a92ec61e5c88857, type: 2}
+  waveChangeOverTime: 0
   waveAmplitudeChange: 0.00001
+  wavePeriodChange: 0.001
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

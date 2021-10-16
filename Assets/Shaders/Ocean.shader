@@ -11,6 +11,12 @@ Shader "Custom/Ocean"
         _WaveSpeed ("Wave Speed", float) = 1
         _WaveAmplitude ("Wave Amplitude", float) = 0.1
         _WavePeriod("Wave Period",float) = 1
+
+        _RippleAmplitude ("Amplitude Ripple",float)=0.01
+        _RippleSpeed ("Speed Ripple",float)=-1.0
+        _RipplePeriod ("Period Ripple",float)=50
+
+
     }
     SubShader
     {
@@ -38,19 +44,29 @@ Shader "Custom/Ocean"
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
-        float  _WaveSpeed;
-        float _WaveAmplitude;
-        float _WavePeriod;
         float _Opacity;
 
-        void vert (inout appdata_full v){
+        fixed PI = 3.1415;
 
-            float PI = 3.1415;
+        float _WaveSpeed;
+        float _WaveAmplitude;
+        float _WavePeriod;
+        
+        float _RippleAmplitude; 
+        float _RippleSpeed; 
+        float _RipplePeriod;
+        
+
+        void vert (inout appdata_full v){
+            //Ocean waves effect
             float waveX = sin( (_Time.y * _WaveSpeed) + (v.vertex.x * (_WavePeriod * 2*PI))   );
             float waveZ = sin( (_Time.y * _WaveSpeed) + (v.vertex.z * (_WavePeriod * 2*PI))   );
             v.vertex.y = waveX * waveZ * _WaveAmplitude;
             
-
+            //Ripple Effect
+            float offsetvert = ((v.vertex.x *  v.vertex.x)+(v.vertex.z *  v.vertex.z));
+            float value = sin(_Time.w * _RippleSpeed  + offsetvert * _RipplePeriod);
+            //v.vertex.y += value * _RippleAmplitude;
             
         }
 

@@ -11,7 +11,7 @@ public class Ocean : MonoBehaviour
     private float waveAmplitude = 0.01f;
     private bool waveAmplitudeChanger=false;
 
-    public float waveSpeedChange = 0.001f;
+    private float waveSpeedChange = 0.0001f;
     private float waveSpeed = 1f;
     private bool waveSpeedChanger=false;
 
@@ -45,6 +45,8 @@ public class Ocean : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other){
 
+
+
     }
 
     void CheckWaveAmplitude(){
@@ -63,9 +65,9 @@ public class Ocean : MonoBehaviour
 
     void CheckWaveSpeed(){
 
-            if(waveSpeed>=1.5f){
+            if(waveSpeed>=1f){
                waveSpeedChanger=false;
-            }else if(waveSpeed<=0.6f){
+            }else if(waveSpeed<=-1f){
                 waveSpeedChanger=true;
             }
             
