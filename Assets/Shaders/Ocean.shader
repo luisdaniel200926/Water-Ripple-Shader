@@ -28,6 +28,7 @@ Shader "Custom/Ocean"
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows alpha:fade
+        // 
         #pragma vertex vert
 
         // Use shader model 3.0 target, to get nicer looking lighting
@@ -56,18 +57,28 @@ Shader "Custom/Ocean"
         float _RippleSpeed; 
         float _RipplePeriod;
         
+        float _RippleHitted;
 
         void vert (inout appdata_full v){
             //Ocean waves effect
             float PI = 3.1415;
             float waveX = sin( (_Time.y * _WaveSpeed) + (v.vertex.x * (_WavePeriod * 2*PI))   );
             float waveZ = sin( (_Time.y * _WaveSpeed) + (v.vertex.z * (_WavePeriod * 2*PI))   );
-            v.vertex.y = waveX * waveZ * _WaveAmplitude;
+            v.vertex.y += waveX * waveZ * _WaveAmplitude;
             
             //Ripple Effect
+            /*
+            if(_RippleHitted >= 0){
+
             float offsetvert = ((v.vertex.x *  v.vertex.x)+(v.vertex.z *  v.vertex.z));
             float value = sin(_Time.w * _RippleSpeed  + offsetvert * _RipplePeriod);
             v.vertex.y += value * _RippleAmplitude;
+
+            _RippleHitted -= 0.01;
+
+            }
+            */
+            
             
         }
 

@@ -20,7 +20,6 @@ public class Ocean : MonoBehaviour
         
     }
 
-
     void Update()
     {
 
@@ -38,6 +37,12 @@ public class Ocean : MonoBehaviour
         
     }
     private void OnCollisionEnter(Collision other){
+        Debug.Log("Collision");
+
+        if(other.gameObject.GetComponent<LimitBounce>())
+        other.gameObject.GetComponent<LimitBounce>().Bounced();
+
+        float velocity = other.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
 
 
 
