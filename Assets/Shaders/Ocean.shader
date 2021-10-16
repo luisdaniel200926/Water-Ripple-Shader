@@ -46,7 +46,7 @@ Shader "Custom/Ocean"
         fixed4 _Color;
         float _Opacity;
 
-        fixed PI = 3.1415;
+
 
         float _WaveSpeed;
         float _WaveAmplitude;
@@ -59,6 +59,7 @@ Shader "Custom/Ocean"
 
         void vert (inout appdata_full v){
             //Ocean waves effect
+            float PI = 3.1415;
             float waveX = sin( (_Time.y * _WaveSpeed) + (v.vertex.x * (_WavePeriod * 2*PI))   );
             float waveZ = sin( (_Time.y * _WaveSpeed) + (v.vertex.z * (_WavePeriod * 2*PI))   );
             v.vertex.y = waveX * waveZ * _WaveAmplitude;
@@ -66,7 +67,7 @@ Shader "Custom/Ocean"
             //Ripple Effect
             float offsetvert = ((v.vertex.x *  v.vertex.x)+(v.vertex.z *  v.vertex.z));
             float value = sin(_Time.w * _RippleSpeed  + offsetvert * _RipplePeriod);
-            //v.vertex.y += value * _RippleAmplitude;
+            v.vertex.y += value * _RippleAmplitude;
             
         }
 
