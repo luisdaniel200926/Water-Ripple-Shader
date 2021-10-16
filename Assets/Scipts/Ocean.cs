@@ -11,10 +11,6 @@ public class Ocean : MonoBehaviour
     private float waveAmplitude = 0.01f;
     private bool waveAmplitudeChanger=false;
 
-    public float waveSpeedChange = 0.001f;
-    private float waveSpeed = 1f;
-    private bool waveSpeedChanger=false;
-
     public float wavePeriodChange = 0.001f;
     private float wavePeriod = 1f;
     private bool wavePeriodChanger=false;
@@ -32,11 +28,9 @@ public class Ocean : MonoBehaviour
         if(execute <= 10 && waveChangeOverTime){
 
             CheckWaveAmplitude();
-            //CheckWaveSpeed();
             CheckWavePeriod();
 
             MaterialToModify.SetFloat("_WaveAmplitude",waveAmplitude);
-            //MaterialToModify.SetFloat("_WaveSpeed",waveSpeed);
             MaterialToModify.SetFloat("_WavePeriod",wavePeriod);
 
         }
@@ -44,6 +38,8 @@ public class Ocean : MonoBehaviour
         
     }
     private void OnCollisionEnter(Collision other){
+
+
 
     }
 
@@ -61,23 +57,8 @@ public class Ocean : MonoBehaviour
             }
     }
 
-    void CheckWaveSpeed(){
 
-            if(waveSpeed>=1.5f){
-               waveSpeedChanger=false;
-            }else if(waveSpeed<=0.6f){
-                waveSpeedChanger=true;
-            }
-            
-            if(waveSpeedChanger){
-                waveSpeed += waveSpeedChange;
-            }else{
-               waveSpeed -= waveSpeedChange;
-            }
-            
-    }
-
-        void CheckWavePeriod(){
+    void CheckWavePeriod(){
 
             if(wavePeriod>=2f){
                wavePeriodChanger=false;
