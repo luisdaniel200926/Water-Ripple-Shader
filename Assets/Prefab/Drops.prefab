@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8365273079931199669}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0.79733, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.3469119e-11, y: 0.79733, z: -4.561785e-18}
   m_LocalScale: {x: 0.025433531, y: 0.025433531, z: 0.025433531}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5256651509148464554
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -126,5 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b778f9644a57e4b90d8f56cb81c4f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaterialToModifyDrop: {fileID: 2100000, guid: cbdbd9a5680557045ba839db17f7108b, type: 2}
+  dropSizeChange: -0.3
   Maxbounces: 3
   bounces: 0

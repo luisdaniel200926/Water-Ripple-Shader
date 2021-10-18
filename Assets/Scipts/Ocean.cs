@@ -6,6 +6,8 @@ public class Ocean : MonoBehaviour
 {
     public Material MaterialToModify;
 
+    public Material MaterialToModifyDrop;
+
     public bool waveChangeOverTime;
     public float waveAmplitudeChange = 0.00001f;
     private float waveAmplitude = 0.01f;
@@ -24,7 +26,6 @@ public class Ocean : MonoBehaviour
     Vector2 impactPos;
     void Start()
     {
-        
         rippleAmplitude = 0;
         MaterialToModify.SetFloat("_RippleAmplitude",rippleAmplitude);
     }
@@ -59,10 +60,7 @@ public class Ocean : MonoBehaviour
         
     }
     private void OnCollisionEnter(Collision other){
-        Debug.Log("Collision");
         Mesh mesh = GetComponent<MeshFilter>().mesh;
-        if(other.gameObject.GetComponent<LimitBounce>())
-        other.gameObject.GetComponent<LimitBounce>().Bounced();
 
         float velocity = other.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
 

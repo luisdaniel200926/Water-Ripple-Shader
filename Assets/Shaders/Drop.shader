@@ -5,7 +5,7 @@ Shader "Unlit/Drop"
         _MainTex ("Texture", 2D) = "white" {}
         _DisplacementMap("Displacement", 2D) = "white" {}
         _DispStrength("DisplacementStrength", float) = 1
-        _WaveSpeed("Displacement Speed", float) = 1
+        _DispSpeed("Displacement Speed", float) = 1
         _Opacity ("TransparencyWater", Range(0,1)) = 0.9
 
     }
@@ -46,20 +46,21 @@ Shader "Unlit/Drop"
             
             sampler2D _DisplacementMap;
             float _DispStrength;
-            float _WaveSpeed;
+            float _DispSpeed;
+
+            float _Size;
+            float _Direction;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                float2 tuv = o.uv + (_Time.y * _WaveSpeed);
+                float2 tuv = o.uv + (_Time.y * _DispSpeed);
                 float height = tex2Dlod( _DisplacementMap, float4( tuv, 0, 0 ) ).x;
                 v.vertex.xyz += v.normal * ( height * _DispStrength );
 
+                v.vertex.xyz *= _Size * _Direction;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                
-                
-
 
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;

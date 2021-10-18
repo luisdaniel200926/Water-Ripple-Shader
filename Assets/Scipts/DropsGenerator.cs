@@ -19,7 +19,7 @@ public class DropsGenerator : MonoBehaviour
         timeSpawn += Time.deltaTime;
         if(timeSpawn > timeBetweenDrops){
             
-            Instantiate(Drop);
+            Instantiate(Drop,transform.position,transform.rotation *  Quaternion.Euler(-90,0,0));
 
             timeSpawn=0;
         }
