@@ -394,6 +394,8 @@ MonoBehaviour:
   waveChangeOverTime: 0
   waveAmplitudeChange: 0.00001
   wavePeriodChange: 0.001
+  rippleMagnifier: 0.02
+  speedRippleSpread: 0.003
 --- !u!65 &848088284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -405,8 +407,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99999964, y: 0.044705473, z: 0.99999964}
-  m_Center: {x: 0.00000017881393, y: -0.022352736, z: 0.00000017881393}
+  m_Size: {x: 0.99999964, y: 0.16166472, z: 0.99999964}
+  m_Center: {x: 0.00000017881393, y: -0.08083236, z: 0.00000017881393}
 --- !u!1 &909465343
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff9adb64420b854cbe1d8887f3f74e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timescale: 1
+  timescale: 0.4
 --- !u!4 &909465345
 Transform:
   m_ObjectHideFlags: 0
@@ -543,7 +545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920910452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.088, y: 1.509, z: 0.00000017881393}
+  m_LocalPosition: {x: 1.045, y: 1.509, z: 0.00000017881393}
   m_LocalScale: {x: 0.026809003, y: 0.026809003, z: 0.026809003}
   m_Children: []
   m_Father: {fileID: 0}
@@ -735,11 +737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 319ce2896a30d2b4daccb5f084ba2111, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.044
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 319ce2896a30d2b4daccb5f084ba2111, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.542
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 319ce2896a30d2b4daccb5f084ba2111, type: 3}
       propertyPath: m_LocalPosition.z

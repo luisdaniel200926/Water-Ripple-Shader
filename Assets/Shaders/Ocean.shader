@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Custom/Ocean"
 {
     Properties
@@ -56,8 +58,12 @@ Shader "Custom/Ocean"
         float _RippleAmplitude; 
         float _RippleSpeed; 
         float _RipplePeriod;
+        float _OffSetX;
+        float _OffSetZ;
+        float _Distance;
+        float _ImpactX;
+        float _ImpactZ;
         
-        float _RippleHitted;
 
         void vert (inout appdata_full v){
             //Ocean waves effect
@@ -67,17 +73,15 @@ Shader "Custom/Ocean"
             v.vertex.y += waveX * waveZ * _WaveAmplitude;
             
             //Ripple Effect
-            /*
-            if(_RippleHitted >= 0){
 
-            float offsetvert = ((v.vertex.x *  v.vertex.x)+(v.vertex.z *  v.vertex.z));
-            float value = sin(_Time.w * _RippleSpeed  + offsetvert * _RipplePeriod);
-            v.vertex.y += value * _RippleAmplitude;
+            float offsetvert = ((v.vertex.x *  v.vertex.x)+(v.vertex.z *  v.vertex.z))+ ((v.vertex.x * _OffSetX) + (v.vertex.z * _OffSetZ)) ;
+            float value = sin(_Time.w * _RippleSpeed  + offsetvert* _RipplePeriod );
+            float3 worldPos = mul(unity_ObjectToWorld, v.vertex ).xyz;
 
-            _RippleHitted -= 0.01;
-
+            if( sqrt(pow(worldPos.x-_ImpactX,2)+pow(worldPos.z-_ImpactZ,2)) < _Distance){
+                v.vertex.y += value * _RippleAmplitude;
             }
-            */
+
             
             
         }

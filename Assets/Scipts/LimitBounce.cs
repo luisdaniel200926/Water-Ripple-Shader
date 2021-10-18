@@ -20,7 +20,7 @@ public class LimitBounce : MonoBehaviour
     void Update()
     {
         if(bounces>=Maxbounces){
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,0.1f);
         }
 
 
