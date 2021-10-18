@@ -58,6 +58,7 @@ Shader "Unlit/Drop"
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 
+                
 
 
                 UNITY_TRANSFER_FOG(o,o.vertex);
