@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Custom/Ocean"
 {
     Properties
@@ -28,6 +30,7 @@ Shader "Custom/Ocean"
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows alpha:fade
+        // 
         #pragma vertex vert
 
         // Use shader model 3.0 target, to get nicer looking lighting
@@ -55,6 +58,11 @@ Shader "Custom/Ocean"
         float _RippleAmplitude; 
         float _RippleSpeed; 
         float _RipplePeriod;
+        float _OffSetX;
+        float _OffSetZ;
+        float _Distance;
+        float _ImpactX;
+        float _ImpactZ;
         
 
         void vert (inout appdata_full v){
@@ -62,12 +70,23 @@ Shader "Custom/Ocean"
             float PI = 3.1415;
             float waveX = sin( (_Time.y * _WaveSpeed) + (v.vertex.x * (_WavePeriod * 2*PI))   );
             float waveZ = sin( (_Time.y * _WaveSpeed) + (v.vertex.z * (_WavePeriod * 2*PI))   );
+<<<<<<< HEAD
             v.vertex.y = waveX  *waveZ* _WaveAmplitude;
+=======
+            v.vertex.y += waveX * waveZ * _WaveAmplitude;
+>>>>>>> ripple
             
             //Ripple Effect
-            float offsetvert = ((v.vertex.x *  v.vertex.x)+(v.vertex.z *  v.vertex.z));
-            float value = sin(_Time.w * _RippleSpeed  + offsetvert * _RipplePeriod);
-            v.vertex.y += value * _RippleAmplitude;
+
+            float offsetvert = ((v.vertex.x *  v.vertex.x)+(v.vertex.z *  v.vertex.z))+ ((v.vertex.x * _OffSetX) + (v.vertex.z * _OffSetZ)) ;
+            float value = sin(_Time.w * _RippleSpeed  + offsetvert* _RipplePeriod );
+            float3 worldPos = mul(unity_ObjectToWorld, v.vertex ).xyz;
+
+            if( sqrt(pow(worldPos.x-_ImpactX,2)+pow(worldPos.z-_ImpactZ,2)) < _Distance){
+                v.vertex.y += value * _RippleAmplitude;
+            }
+
+            
             
         }
 
