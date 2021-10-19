@@ -75,7 +75,7 @@ Shader "Custom/Ocean"
             //Ripple Effect
 
             float offsetvert = ((v.vertex.x *  v.vertex.x)+(v.vertex.z *  v.vertex.z))+ ((v.vertex.x * _OffSetX) + (v.vertex.z * _OffSetZ)) ;
-            float value = sin(_Time.w * _RippleSpeed  + offsetvert* _RipplePeriod );
+            float value = sin(_Time.w * _RippleSpeed  + offsetvert * _RipplePeriod );
             float3 worldPos = mul(unity_ObjectToWorld, v.vertex ).xyz;
 
             if( sqrt(pow(worldPos.x-_ImpactX,2)+pow(worldPos.z-_ImpactZ,2)) < _Distance){
