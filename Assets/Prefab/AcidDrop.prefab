@@ -108,7 +108,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8365273079931199669}
-  m_Material: {fileID: 13400000, guid: c92cbcb2393499943929996e49af1739, type: 2}
+  m_Material: {fileID: 13400000, guid: 4db8914ac6c4ddc46a8d042a646ffd49, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -128,5 +128,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaterialToModifyDrop: {fileID: 2100000, guid: f068a556438ce2b4892081ea605324e0, type: 2}
   dropSizeChange: -0.3
-  Maxbounces: 3
+  Maxbounces: 2
   bounces: 0

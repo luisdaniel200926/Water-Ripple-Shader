@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Ocean Scene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Lab Water Scene.unity
+    guid: 18651ce5b1cfee7469c496198110d69c
+  - enabled: 1
+    path: Assets/Scenes/Lab Acid Scene.unity
+    guid: 90ad9fa4a963c324aa79332bcce274c8
   m_configObjects: {}
