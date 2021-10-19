@@ -69,15 +69,15 @@ Material:
     - _OcclusionStrength: 1
     - _Opacity: 0.7
     - _Parallax: 0.02
-    - _RippleAmplitude: 0
+    - _RippleAmplitude: 0.0002214502
     - _RipplePeriod: 50
     - _RippleSpeed: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaveAmplitude: 0.010069997
-    - _WavePeriod: 1.0070003
+    - _WaveAmplitude: 0.010099997
+    - _WavePeriod: 1.3960185
     - _WaveSpeed: 1
     - _ZWrite: 1
     m_Colors:
