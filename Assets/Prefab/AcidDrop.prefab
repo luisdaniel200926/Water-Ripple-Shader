@@ -128,5 +128,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaterialToModifyDrop: {fileID: 2100000, guid: f068a556438ce2b4892081ea605324e0, type: 2}
   dropSizeChange: -0.3
-  Maxbounces: 3
+  Maxbounces: 2
   bounces: 0

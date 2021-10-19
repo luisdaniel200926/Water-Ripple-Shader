@@ -16,10 +16,9 @@ public class Drop : MonoBehaviour
     {
         dropSize = 1;
         bounces = 0;
-        MaterialToModifyDrop.SetFloat("_Size",1.0f);
+        MaterialToModifyDrop.SetFloat("_Size",dropSize);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(bounces>=Maxbounces){

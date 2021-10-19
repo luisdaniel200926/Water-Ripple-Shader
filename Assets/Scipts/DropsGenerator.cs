@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DropsGenerator : MonoBehaviour
 {
-
     public GameObject Drop;
 
     public float timeBetweenDrops;
@@ -18,9 +17,7 @@ public class DropsGenerator : MonoBehaviour
     {
         timeSpawn += Time.deltaTime;
         if(timeSpawn > timeBetweenDrops){
-            
             Instantiate(Drop,transform.position,transform.rotation *  Quaternion.Euler(-90,0,0));
-
             timeSpawn=0;
         }
     }

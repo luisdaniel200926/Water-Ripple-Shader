@@ -12,10 +12,15 @@ public class Ocean : MonoBehaviour
     public float waveAmplitudeChange = 0.00001f;
     private float waveAmplitude = 0.01f;
     private bool waveAmplitudeChanger=false;
+    private float maxWaveAmplitude =0.016f;
+    private float minWaveAmplitude =0.01f;
 
     public float wavePeriodChange = 0.001f;
     private float wavePeriod = 1f;
     private bool wavePeriodChanger=false;
+
+    private float maxWavePeriod =2f;
+    private float minWavePeriod =1f;
 
     public float rippleMagnifier;
     float rippleAmplitude;
@@ -32,7 +37,8 @@ public class Ocean : MonoBehaviour
 
     void Update()
     {
-
+        // 10% chance to change amplitude and period per frame
+        //This changes amplitude and period for it to not look the same all the time
         int execute = Random.Range(1,100);
         if(execute <= 10 && waveChangeOverTime){
 
@@ -45,9 +51,9 @@ public class Ocean : MonoBehaviour
         }
 
         rippleAmplitude = MaterialToModify.GetFloat("_RippleAmplitude");
-
+        //Lower the amplitude of the ripple for it to fade away
         if(rippleAmplitude>0){
-            rippleAmplitude = rippleAmplitude *0.99f;
+            rippleAmplitude = rippleAmplitude *.99f;
             distance += speedRippleSpread;
             MaterialToModify.SetFloat("_Distance",distance);
         }
@@ -67,6 +73,7 @@ public class Ocean : MonoBehaviour
         float disX = transform.position.x - other.transform.position.x;
         float disZ = transform.position.z - other.transform.position.z;
         distance = 0;
+        
         impactPos.x = other.transform.position.x;
         impactPos.y = other.transform.position.z;
 
@@ -75,19 +82,18 @@ public class Ocean : MonoBehaviour
 
         MaterialToModify.SetFloat("_OffSetX",disX/mesh.bounds.size.x * 2.5f);
         MaterialToModify.SetFloat("_OffSetZ",disZ/mesh.bounds.size.z* 2.5f);
-        rippleAmplitude = velocity * rippleMagnifier;
 
+        rippleAmplitude = velocity * rippleMagnifier;
         MaterialToModify.SetFloat("_RippleAmplitude",rippleAmplitude);
 
     }
 
     void CheckWaveAmplitude(){
-            if(waveAmplitude>=0.016f){
+            if(waveAmplitude>=maxWaveAmplitude){
                 waveAmplitudeChanger=false;
-            }else if(waveAmplitude<=0.01f){
+            }else if(waveAmplitude<=minWaveAmplitude){
                 waveAmplitudeChanger=true;
             }
-            
             if(waveAmplitudeChanger){
                 waveAmplitude += waveAmplitudeChange;
             }else{
@@ -98,9 +104,9 @@ public class Ocean : MonoBehaviour
 
     void CheckWavePeriod(){
 
-            if(wavePeriod>=2f){
+            if(wavePeriod>=maxWavePeriod){
                wavePeriodChanger=false;
-            }else if(wavePeriod<=1f){
+            }else if(wavePeriod<=minWavePeriod){
                 wavePeriodChanger=true;
             }
             
