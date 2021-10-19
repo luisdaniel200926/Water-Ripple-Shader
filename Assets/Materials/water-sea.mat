@@ -29,10 +29,10 @@ Material:
     - _Metallic: 0
     - _Opacity: 0.9
     - _RippleAmplitude: 0.01
-    - _RipplePeriod: 50
+    - _RipplePeriod: 100
     - _RippleScale: 0.01
     - _RippleSpeed: -1
-    - _WaveAmplitude: 0.1
+    - _WaveAmplitude: 0.01
     - _WavePeriod: 1
     - _WaveSpeed: 1
     m_Colors:
